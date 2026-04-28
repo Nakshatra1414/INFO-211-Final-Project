@@ -47,3 +47,30 @@ model.fit(X_train, y_train)
 pred = model.predict(X_test)
 
 print(classification_report(y_test, pred))
+
+# Confusion Matrix for Customer Classification
+
+# Confusion Matrix for Customer Classification
+
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
+
+# Generate confusion matrix
+cm = confusion_matrix(y_test, pred)
+
+# Display confusion matrix
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=cm,
+    display_labels=["Low", "Medium", "High"]
+)
+
+fig, ax = plt.subplots(figsize=(8, 6))
+disp.plot(cmap="Blues", ax=ax, colorbar=False)
+
+# Styling
+plt.title("Confusion Matrix - Customer Classification", fontsize=16, pad=20)
+plt.xlabel("Predicted Label", fontsize=12)
+plt.ylabel("Actual Label", fontsize=12)
+
+plt.tight_layout()
+plt.show()
